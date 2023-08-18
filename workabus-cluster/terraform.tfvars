@@ -1,0 +1,13 @@
+cluster_name = "workabus-cluster"
+location = "australia-southeast1"
+project_id = "workabus-pipeline"
+subnetwork = "default"
+istio_enabled          = "false"
+istio_auth             = "AUTH_MUTUAL_TLS"
+node_pool_name         = "workabus-cluster-node-pool"
+master_version         = "1.15.12-gke.3"
+worker_nodes_version   = "1.15.12-gke.3"
+node_locations         = ["australia-southeast1-a", "australia-southeast1-b", "australia-southeast1-c"]
+worker_nodes_count     = "1"
+worker_nodes_disk_size = "100"
+worker_node_type       = "n1-standard-1"
