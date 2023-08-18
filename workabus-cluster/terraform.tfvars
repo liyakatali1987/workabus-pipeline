@@ -1,5 +1,5 @@
 cluster_name           = "workabus-cluster"
-location               = "australia-southeast1"
+location               = "australia-southeast1-a"
 project_id             = "workabus-pipeline"
 subnetwork             = "default"
 istio_enabled          = "false"
