@@ -17,7 +17,7 @@ resource "google_container_node_pool" "workabus_node_pool" {
   location       = var.location
   project        = var.project_id
   version        = var.worker_nodes_version
-  cluster        = google_container_cluster.primary
+  cluster        = google_container_cluster.primary.name
   node_locations = var.node_locations
   node_count     = var.worker_nodes_count
 
