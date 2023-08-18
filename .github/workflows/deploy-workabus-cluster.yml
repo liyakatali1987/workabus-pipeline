@@ -52,8 +52,14 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
+        id: apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
         run: terraform apply -auto-approve
+        continue-on-error: true
+      
+      - name: Terraform Destroy
+        if: steps.apply.outcome == 'failure'
+        run: terraform destroy -auto-approve
   
   bootstrap:
     name: bootstrap-cluster
