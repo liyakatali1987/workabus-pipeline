@@ -65,14 +65,19 @@ jobs:
     name: bootstrap-cluster
     runs-on: ubuntu-latest
     needs: terraform
-    steps:    
+    steps:
+      - id: 'auth'
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: ${{ secrets.GCP_SECRET }}
+
       - id: get-credentials
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
         uses: google-github-actions/get-gke-credentials@main
         with:
           cluster_name: ${{ vars.cluster_name }}
           location: ${{ vars.location }}
-          credentials: ${{ secrets.GCP_SECRET }}
       
       - id: get-pods
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' 
